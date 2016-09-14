@@ -1,6 +1,7 @@
 package com.thoughtworks.model;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +14,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "candidate", schema = "public")
+@Table(name = "candidate")
+@EqualsAndHashCode
 public class Candidate implements Serializable {
     private String name;
     @Id

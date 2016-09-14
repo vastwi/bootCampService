@@ -15,8 +15,8 @@
         <property name="show_sql">true</property>
 
         <property name="connection.autocommit">true</property>
-        <mapping class="com.thoughtworks.model.Candidate"/>
 
+        <mapping class="com.thoughtworks.model.Candidate"/>
 
     </session-factory>
 </hibernate-configuration>
