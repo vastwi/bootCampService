@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.10'
+    compile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.2.Final'
+
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4-1200-jdbc41'
+
+    testCompile 'junit:junit:4.12'
+}
