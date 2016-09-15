@@ -11,11 +11,14 @@ public class LoginService {
 
     private final static String THOUGHT_WORKS = "ThoughtWorks";
 
-    @Inject
-    private BootCampService bootCampService;
-    @Inject
-    private Repository repository;
+    private final BootCampService bootCampService;
+    private final Repository repository;
 
+    @Inject
+    public LoginService(BootCampService bootCampService, Repository repository) {
+        this.bootCampService = bootCampService;
+        this.repository = repository;
+    }
 
     public boolean login(Candidate employee) {
         if (isAuthorized(employee)) {

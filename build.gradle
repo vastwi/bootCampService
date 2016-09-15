@@ -1,4 +1,18 @@
 apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+apply plugin: 'spring-boot'
 
 repositories {
     mavenLocal()
@@ -7,6 +21,7 @@ repositories {
 }
 
 dependencies {
+
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.10'
     compile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
@@ -14,5 +29,22 @@ dependencies {
 
     compile group: 'org.postgresql', name: 'postgresql', version: '9.4-1200-jdbc41'
 
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
+    testCompile('com.jayway.jsonpath:json-path')
+
     testCompile 'junit:junit:4.12'
 }
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-jetty:1.4.0.RELEASE")
+
+    compile('org.springframework.boot:spring-boot-starter') {
+        exclude module: 'spring-boot-starter-logging'
+    }
+    compile('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'spring-boot-starter-logging'
+    }
+}
+

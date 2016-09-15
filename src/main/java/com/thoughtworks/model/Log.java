@@ -1,6 +1,7 @@
 package com.thoughtworks.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "log")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 public class Log implements Serializable {
     @Id
     private int candidateId;

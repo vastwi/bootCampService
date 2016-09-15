@@ -70,4 +70,15 @@ public class BootCampServiceTest {
         transaction.commit();
     }
 
+    @Test
+    public void shouldFindCandidatesById() throws Exception {
+        createSomeCandidates(session);
+
+        assertThat(repository.find(1).getName(), is("alice"));
+
+        assertThat(repository.find(2).getId(), is(2));
+        assertThat(repository.find(2).getName(), is("Hydalice"));
+        assertThat(repository.find(2).getCompany(), is("TW-Hyd"));
+    }
+
 }

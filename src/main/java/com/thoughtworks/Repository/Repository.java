@@ -12,15 +12,13 @@ import java.util.List;
 
 public class Repository {
     private final SessionFactory sessionFactory;
-    private final Session session;
 
     public Repository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-        session = sessionFactory.openSession();
     }
 
     public void save(Object entity) {
-
+        Session session = sessionFactory.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -35,7 +33,7 @@ public class Repository {
     }
 
     public List<Candidate> getRegisteredCandidates() {
-        List<Candidate> candidates = session
+        List<Candidate> candidates = sessionFactory.openSession()
                 .createQuery("from Candidate cs")
                 .list();
         return candidates == null ? Collections.emptyList() : candidates;
@@ -43,6 +41,8 @@ public class Repository {
     }
 
     public Candidate find(int candidateId) {
-        return null;
+        return (Candidate) sessionFactory.openSession().createQuery("from Candidate cs where cs.id = :filterId")
+                .setParameter("filterId", candidateId)
+                .uniqueResult();
     }
 }
