@@ -6,6 +6,7 @@ import com.thoughtworks.model.Candidate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -81,4 +82,8 @@ public class BootCampServiceTest {
         assertThat(repository.find(2).getCompany(), is("TW-Hyd"));
     }
 
+    @After
+    public void tearDown() throws Exception {
+        deleteCandidates();
+    }
 }

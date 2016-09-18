@@ -45,4 +45,8 @@ public class Repository {
                 .setParameter("filterId", candidateId)
                 .uniqueResult();
     }
+
+    public void register(Candidate candidate) {
+        save(candidate);
+    }
 }
